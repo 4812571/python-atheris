@@ -2,13 +2,14 @@
 
 import atheris
 import sys
+import os
 
 def TestOneInput(data):
-    fdp = atheris.FuzzedDataProvider(data)
-    my_str = fdp.ConsumeString(3)
-
-    if my_str == "bug":
-        raise Exception("You got it!")
+    if len(data) >= 3 :    
+        if data[0] == ord('b'):
+            if data[1] == ord('u'):
+                if data[2] == ord('g'):
+                    raise Exception("Made it to the bug!")
 
 atheris.instrument_all()
 atheris.Setup(sys.argv, TestOneInput)
