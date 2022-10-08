@@ -1,0 +1,5 @@
+project: 4812571/atheris-test
+target: atheris-test
+cmds:
+  - cmd: /mayhemit.py
+    libfuzzer: true
