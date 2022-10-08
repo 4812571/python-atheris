@@ -5,11 +5,11 @@ import sys
 
 @atheris.instrument_func
 def TestOneInput(data):
-    if len(data) >= 3 :    
-        if data[0] == ord('b'):
-            if data[1] == ord('u'):
-                if data[2] == ord('g'):
-                    raise Exception("Made it to the bug!")
+    fdp = atheris.FuzzedDataProvider(data)
+    str = fdp.ConsumeString(3)
+
+    if str == "Bug":
+        raise Exception("You got it!")
 
 atheris.Setup(sys.argv, TestOneInput)
 atheris.Fuzz()
